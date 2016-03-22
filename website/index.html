@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Steam Profile Background</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="assets/style.css" />
+  <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Steam Profile Background</h1>
+    <div class="block">Get the background image from any public Steam profile page</div>
+    <div class="block">
+      <form id="input">
+        <input type="submit" value="Lookup" />
+        <div class="inputBox">
+          <input type="text" placeholder="Steam Profile page URL" id="inputURL" onclick="this.select();" />
+        </div>
+      </form>
+    </div>
+    <div id="resultBox">
+    </div>
+    <footer>Source @ <a href="https://github.com/Martyn96" target="_blank">GitHub</a></footer>
+  </div>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="assets/script.js"></script>
+</body>
+
+</html>
