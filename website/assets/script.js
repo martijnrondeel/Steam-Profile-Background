@@ -3,7 +3,7 @@ $("#resultBox").hide();
 $("#input").submit(function(event) {
   showStatus(1);
 
-  $.get("https://martyn.pw/api/spb", {
+  $.get("https://martyn.pw/projects/steam-profile-background/api", {
       url: $("#inputURL").val()
     })
     .done(function(data) {
