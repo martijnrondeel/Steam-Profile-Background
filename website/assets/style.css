@@ -1,11 +1,10 @@
+/* Main page CSS */
+
 html {
   background-color: #121726;
   font-family: 'Open Sans', sans-serif;
   color: #ffffff;
 }
-
-/* Main page CSS */
-
 .container {
   margin: 1em auto;
   padding: 0 1em;
@@ -19,9 +18,6 @@ html {
 .game-title {
   font-weight: 300;
   font-size: 1.8em;
-}
-.description {
-  font-size: 0.9em;
 }
 .block {
   background-color: #262E41;
@@ -76,17 +72,18 @@ input[type=submit]:hover {
 }
 input[type=submit]:active {
   transform: translateY(3px);
-  box-shadow: inset 0 0px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: none;
 }
 
 /* Link CSS */
 
 a:link {
   color: #f27405;
-  text-decoration: none;
 }
 a:visited {
   color: #f25c05;
+}
+a:visited, a:visited {
   text-decoration: none;
 }
 a:hover, a:active {
