@@ -1,17 +1,21 @@
 $("#resultBox").hide();
 
 $("#input").submit(function(event) {
-  showStatus(1);
+  $("#resultBox").html('<div class="block">Loading...</div>');
 
-  $.get("https://martyn.pw/projects/steam-profile-background/api", {
+  $.ajax({
+    url: 'https://martyn.pw/projects/steam-profile-background/api',
+    type: 'GET',
+    data: {
       url: $("#inputURL").val()
-    })
-    .done(function(data) {
+    },
+    success: function(data) {
       showData(data.imageURL, data.gameName);
-    })
-    .fail(function() {
-      showStatus(2);
-    });
+    },
+    error: function(err) {
+      showStatus(err.responseJSON);
+    }
+  });
   event.preventDefault();
 });
 
@@ -24,11 +28,11 @@ function showData(image, game) {
   $("#resultBox").show();
 }
 
-function showStatus(status) {
-  if (status == 1) {
-    $("#resultBox").html('<div class="block">Loading...</div>');
-  } else if (status == 2) {
-    $("#resultBox").html('<div class="block warning">Invalid URL</div>');
+function showStatus(data) {
+  if (data.error == "INVALID_URL") {
+    $("#resultBox").html('<div class="block warning">Profile URL was invalid</div>');
+  } else if (data.error == "RATELIMIT_EXCEEDED") {
+    $("#resultBox").html('<div class="block warning">Limit exceeded, please wait 1 minute</div>');
   }
   $("#resultBox").show();
 }

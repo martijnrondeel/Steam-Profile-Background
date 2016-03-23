@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_limiter import Limiter
 from urlparse import urlparse
 from lxml.cssselect import CSSSelector
 import lxml.html
@@ -9,6 +10,11 @@ import re
 app = Flask(__name__)
 ssl_cert = ""
 ssl_key = ""
+
+
+def getIP():
+    """Returns IP from user behind proxy, needed for rate-limiting"""
+    return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
 
 def getImage(url):
@@ -32,6 +38,18 @@ def getGame(url):
     data = json.load(response)
     return data[appID]["data"]["name"]
 
+# Enable rate-limiter
+limiter = Limiter(
+    app,
+    key_func=getIP,
+    global_limits=["200 per day", "5 per minute"])
+
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return jsonify(error="RATELIMIT_EXCEEDED",
+                   description="You exceeded the limit of %s" % e.description), 429
+
 
 @app.route('/api')
 def main():
@@ -41,10 +59,12 @@ def main():
     if url.netloc == 'steamcommunity.com':
         image = getImage(data)
         game = getGame(image)
-        return jsonify(imageURL=image,
-                       gameName=game)
+        return jsonify(imageURL=image, gameName=game)
     else:
-        return "", 404
+        return jsonify(error="INVALID_URL",
+                       description="Check if the URL you gave was valid, and the profile\
+                       is public (example URL: http://steamcommunity.com/id/Martyn96)"), 404
+
 
 if __name__ == '__main__':
     app.run('127.0.0.1', debug=False, port=1337,  # API runs behind nginx proxy, so only listen on local
