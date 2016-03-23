@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 from flask_limiter import Limiter
 from urlparse import urlparse
 from lxml.cssselect import CSSSelector
+import logging
+from logging.handlers import RotatingFileHandler
+from time import gmtime, strftime
 import lxml.html
 import urllib2
 import json
@@ -55,6 +58,8 @@ limiter = Limiter(
 
 @app.errorhandler(429)
 def ratelimit_handler(e):
+    app.logger.warning('[%s] User triggered rate-limit (%s)',
+                       strftime("%Y-%m-%d %H:%M:%S", gmtime()), getIP())
     return jsonify(error="RATELIMIT_EXCEEDED",
                    description="You exceeded the limit of %s" % e.description), 429
 
@@ -73,5 +78,8 @@ def main():
 
 
 if __name__ == '__main__':
+    handler = RotatingFileHandler('app.log', maxBytes=10000, backupCount=1)
+    handler.setLevel(logging.INFO)
+    app.logger.addHandler(handler)
     app.run('127.0.0.1', debug=False, port=1337,  # API runs behind nginx proxy, so only listen on local
             ssl_context=(ssl_cert, ssl_key), threaded=True)
