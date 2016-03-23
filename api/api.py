@@ -17,6 +17,15 @@ def getIP():
     return request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
 
 
+def invalidURL():
+    """Checks if URL is faulty"""
+    url = urlparse(request.args.get('url', ''))
+    if url.netloc == 'steamcommunity.com':
+        return False
+    else:
+        return True
+
+
 def getImage(url):
     """Extracts profile background image URL from inlined CSS property"""
     content = urllib2.urlopen(url).read()
@@ -41,8 +50,7 @@ def getGame(url):
 # Enable rate-limiter
 limiter = Limiter(
     app,
-    key_func=getIP,
-    global_limits=["200 per day", "5 per minute"])
+    key_func=getIP)
 
 
 @app.errorhandler(429)
@@ -51,19 +59,17 @@ def ratelimit_handler(e):
                    description="You exceeded the limit of %s" % e.description), 429
 
 
+# don't rate limit when URL is invalid
+@limiter.limit("200/day;5/minute", exempt_when=incorrectURL)
 @app.route('/api')
 def main():
-    data = request.args.get('url', '')
-    url = urlparse(data)
-    # check if URL is steam profile URL
-    if url.netloc == 'steamcommunity.com':
-        image = getImage(data)
+    if invalidURL() == False:
+        image = getImage(request.args.get('url', ''))
         game = getGame(image)
         return jsonify(imageURL=image, gameName=game)
     else:
         return jsonify(error="INVALID_URL",
-                       description="Check if the URL you gave was valid, and the profile\
-                       is public (example URL: http://steamcommunity.com/id/Martyn96)"), 404
+                       description="Check if the URL you gave was valid, and the profile is public (example URL: http://steamcommunity.com/id/Martyn96)"), 404
 
 
 if __name__ == '__main__':
