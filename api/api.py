@@ -60,7 +60,7 @@ def ratelimit_handler(e):
 
 
 # don't rate limit when URL is invalid
-@limiter.limit("200/day;5/minute", exempt_when=incorrectURL)
+@limiter.limit("200/day;5/minute", exempt_when=invalidURL)
 @app.route('/api')
 def main():
     if invalidURL() == False:
