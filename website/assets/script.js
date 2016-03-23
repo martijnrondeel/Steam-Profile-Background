@@ -30,9 +30,32 @@ function showData(image, game) {
 
 function showStatus(data) {
   if (data.error == "INVALID_URL") {
-    $("#resultBox").html('<div class="block warning">Profile URL was invalid</div>');
+    $("#resultBox").html('<div class="block warning">Profile URL is invalid</div>');
   } else if (data.error == "RATELIMIT_EXCEEDED") {
-    $("#resultBox").html('<div class="block warning">Limit exceeded, please wait 1 minute</div>');
+    toggleSearch(false);
+    var duration = 59;
+    var timer = setInterval(function() {
+      $('#seconds').text(duration);
+
+      if (duration <= 0) {
+        clearInterval(timer);
+        toggleSearch(true);
+      } else {
+        duration -= 1;
+      }
+    }, 1000);
+    $("#resultBox").html('<div class="block warning">Limit exceeded, please wait <span id="seconds">60</span> seconds</div>');
   }
   $("#resultBox").show();
+}
+
+function toggleSearch(toggle) {
+  if (toggle) {
+    $("#resultBox").fadeOut();
+    $("#searchButton").removeClass("disabled");
+    $("input").prop('disabled', false);
+  } else {
+    $("#searchButton").addClass("disabled");
+    $("input").prop('disabled', true);
+  }
 }

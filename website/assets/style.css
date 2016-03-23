@@ -76,6 +76,9 @@ input[type=submit]:active {
   transform: translateY(3px);
   box-shadow: none;
 }
+.disabled {
+  background-color: #B5B5B4 !important;
+}
 
 /* Link CSS */
 
