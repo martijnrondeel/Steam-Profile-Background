@@ -8,6 +8,7 @@ $("#input").submit(function(event) {
   }
 
   $("#resultBox").html('<div class="block">Loading...</div>');
+  toggleSearch(false);
 
   $.ajax({
     url: 'https://martyn.pw/projects/steam-profile-background/api',
@@ -16,9 +17,11 @@ $("#input").submit(function(event) {
       url: "http://steamcommunity.com/id/" + $("#inputURL").val()
     },
     success: function(data) {
+      toggleSearch(true);
       showData(data.imageURL, data.gameName);
     },
     error: function(err) {
+      toggleSearch(true);
       showStatus(err.responseJSON);
     }
   });
@@ -58,7 +61,6 @@ function showStatus(data) {
 
 function toggleSearch(toggle) {
   if (toggle) {
-    $("#resultBox").fadeOut();
     $("input").removeClass("disabled");
     $("input").prop('disabled', false);
   } else {
