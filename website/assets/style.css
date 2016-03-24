@@ -1,15 +1,24 @@
 /* Main page CSS */
 
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
 html {
   background-color: #121726;
   font-family: 'Open Sans', sans-serif;
   color: #ffffff;
 }
 .container {
-  margin: 1em auto;
+  min-height: 100%;
+  margin: 0 auto -30px;
   width: 34em;
 }
 .title {
+  padding-top: 40px;
+  padding-bottom: 10px;
   font-weight: 300;
   text-align: center;
   font-size: 2.4em;
@@ -108,16 +117,11 @@ a:hover, a:active {
 /* Footer */
 
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: -50px;
-  width: 100px;
-  height: 30px;
   text-align: center;
   font-size: 12px;
+}
+footer, .push {
+  height: 30px;
 }
 
 /* "Responsiveness" */
