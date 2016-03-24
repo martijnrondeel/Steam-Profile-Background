@@ -48,6 +48,7 @@ function showStatus(data) {
       if (duration <= 0) {
         clearInterval(timer);
         toggleSearch(true);
+        $("#resultBox").fadeOut(); // remove the warning
       } else {
         duration -= 1;
       }
