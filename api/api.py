@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
-import logger
-import tools
 import ratelimit
+import logger
+import cache
+import tools
+
 
 app = Flask(__name__)
 ssl_cert = ""
 ssl_key = ""
-
-# Enable rate-limiting
 limiter = ratelimit.Enable(app)
 
 
@@ -19,7 +19,7 @@ def ratelimit_handler(e):
                    description="You exceeded the limit of %s" % e.description), 429
 
 
-@limiter.limit("200/day;5/minute")
+@limiter.limit("200/day;10/minute")
 @app.route('/api')
 def main():
     url = request.args.get('url', '')
@@ -36,6 +36,7 @@ def main():
 
 
 if __name__ == '__main__':
+    cache.enableCache()
     logger.startLogger(app)
     app.run('127.0.0.1', debug=False, port=1337,  # API runs behind nginx proxy, so only listen on local
             ssl_context=(ssl_cert, ssl_key), threaded=True)
