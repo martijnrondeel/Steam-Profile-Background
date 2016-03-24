@@ -1,4 +1,12 @@
 $("#input").submit(function(event) {
+  event.preventDefault();
+
+  // Steam profile url's are 2 chars or more
+  if ($("#inputURL").val().length < 2) {
+    $("#resultBox").html('<div class="block warning">Please fill something in</div>');
+    return;
+  }
+
   $("#resultBox").html('<div class="block">Loading...</div>');
 
   $.ajax({
@@ -14,7 +22,6 @@ $("#input").submit(function(event) {
       showStatus(err.responseJSON);
     }
   });
-  event.preventDefault();
 });
 
 function showData(image, game) {
@@ -28,7 +35,7 @@ function showData(image, game) {
 
 function showStatus(data) {
   if (data.error == "INVALID_URL") {
-    $("#resultBox").html('<div class="block warning">Profile URL is invalid</div>');
+    $("#resultBox").html('<div class="block warning">ID is invalid</div>');
   } else if (data.error == "RATELIMIT_EXCEEDED") {
     toggleSearch(false);
     var duration = 59;
@@ -43,6 +50,8 @@ function showStatus(data) {
       }
     }, 1000);
     $("#resultBox").html('<div class="block warning">Limit exceeded, please wait <span id="seconds">60</span> seconds</div>');
+  } else if (data.error == "NO_BACKGROUND") {
+    $("#resultBox").html('<div class="block warning">That profile has no background</div>');
   }
   $("#resultBox").show();
 }

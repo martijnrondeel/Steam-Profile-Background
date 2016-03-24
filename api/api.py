@@ -34,6 +34,8 @@ def getImage(url):
     content = urllib2.urlopen(url).read()
     tree = lxml.html.fromstring(content)
     elements = tree.cssselect('div.has_profile_background')
+    if not elements:
+        return None
     url = elements[0].get("style")
     url = url.replace("background-image: url( '", "")
     url = url.replace("' );", "")
@@ -70,11 +72,15 @@ def ratelimit_handler(e):
 def main():
     if invalidURL() == False:
         image = getImage(request.args.get('url', ''))
+        if image == None:
+            return jsonify(error="NO_BACKGROUND",
+                           description="This Steam profile has no background"), 404
         game = getGame(image)
         return jsonify(imageURL=image, gameName=game)
     else:
         return jsonify(error="INVALID_URL",
-                       description="Check if the URL you gave was valid, and the profile is public (example URL: http://steamcommunity.com/id/Martyn96)"), 404
+                       description="Check if the URL you gave was valid, and the profile is public\
+                        (example URL: http://steamcommunity.com/id/Martyn96)"), 404
 
 
 if __name__ == '__main__':
