@@ -7,7 +7,6 @@ html {
 }
 .container {
   margin: 1em auto;
-  padding: 0 1em;
   width: 34em;
 }
 .title {
@@ -44,11 +43,20 @@ input[type=text], select {
   font-size: 14px;
 }
 .inputBox {
+  position: relative;
   overflow: hidden;
   padding-right: .5em;
 }
+.inputBox label {
+  position: absolute;
+  left: 7px;
+  top: 11px;
+  color: #000000;
+  font-size: 14px;
+}
 .inputBox input {
   width: 100%;
+  padding-left: 216px;
 }
 
 /* Button CSS */
@@ -105,8 +113,8 @@ footer {
   left: 50%;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: -200px;
-  width: 400px;
+  margin-left: -50px;
+  width: 100px;
   height: 30px;
   text-align: center;
   font-size: 12px;
@@ -116,35 +124,23 @@ footer {
 
 @media only screen and (max-width: 600px) {
   .container {
-    width: 22em;
+    width: 98%;
   }
   .title {
-    font-size: 1.8em;
-  }
-  .block {
-    font-size: 14px;
+    font-size: 1.6em;
   }
   #buyButton {
-    float: none;
-    margin-left: 180px;
-    margin-top: 10px;
+    margin-left: 0px;
   }
   .game-title {
     font-size: 1.4em;
   }
 }
-@media only screen and (max-width: 400px) {
-  .container {
-    width: 15em;
+@media only screen and (max-width: 470px) {
+  .inputBox label {
+    display: none;
   }
-  .title {
-    font-size: 1.2em;
-  }
-  #buyButton {
-    margin-left: 0px;
-    width: 100%;
-  }
-  .game-title {
-    font-size: 1.2em;
+  .inputBox input {
+    padding-left: 10px;
   }
 }

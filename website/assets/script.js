@@ -1,5 +1,3 @@
-$("#resultBox").hide();
-
 $("#input").submit(function(event) {
   $("#resultBox").html('<div class="block">Loading...</div>');
 
@@ -7,7 +5,7 @@ $("#input").submit(function(event) {
     url: 'https://martyn.pw/projects/steam-profile-background/api',
     type: 'GET',
     data: {
-      url: $("#inputURL").val()
+      url: "http://steamcommunity.com/id/" + $("#inputURL").val()
     },
     success: function(data) {
       showData(data.imageURL, data.gameName);
@@ -52,10 +50,10 @@ function showStatus(data) {
 function toggleSearch(toggle) {
   if (toggle) {
     $("#resultBox").fadeOut();
-    $("#searchButton").removeClass("disabled");
+    $("input").removeClass("disabled");
     $("input").prop('disabled', false);
   } else {
-    $("#searchButton").addClass("disabled");
+    $("input").addClass("disabled");
     $("input").prop('disabled', true);
   }
 }
