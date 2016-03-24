@@ -44,7 +44,7 @@ html {
 
 input[type=text], select {
   width: 200px;
-  padding: 12px 20px;
+  padding: 11px 20px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -59,13 +59,14 @@ input[type=text], select {
 .inputBox label {
   position: absolute;
   left: 7px;
-  top: 11px;
+  top: 12px;
   color: #000000;
   font-size: 14px;
+  font-family: Arial;
 }
 .inputBox input {
   width: 100%;
-  padding-left: 216px;
+  padding-left: 199px;
 }
 
 /* Button CSS */
