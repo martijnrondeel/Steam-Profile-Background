@@ -56,6 +56,9 @@ function showStatus(data) {
     $("#resultBox").html('<div class="block warning">Limit exceeded, please wait <span id="seconds">60</span> seconds</div>');
   } else if (data.error == "NO_BACKGROUND") {
     $("#resultBox").html('<div class="block warning">That profile has no background</div>');
+  } else if (data.error == "GAME_NOT_FOUND") {
+    $("#resultBox").html('<div class="block"> <a href="' + data.imageURL + '" target="_blank">' +
+      '<img src="' + data.imageURL + '" alt="Background image"></a></div><div class="block warning">The game that belongs to this wallpaper doesn\'t exist anymore</div>');
   }
   $("#resultBox").show();
 }

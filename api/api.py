@@ -29,6 +29,10 @@ def main():
             return jsonify(error="NO_BACKGROUND",
                            description="This Steam profile has no background"), 404
         game = tools.getGame(image)
+        if game == None:
+            return jsonify(error="GAME_NOT_FOUND",
+                           description="The game that belongs to this wallpaper doesn't exist anymore",
+                           imageURL=image), 404
         return jsonify(imageURL=image, gameName=game)
     else:
         return jsonify(error="INVALID_URL",
