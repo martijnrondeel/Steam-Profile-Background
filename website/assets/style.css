@@ -1,151 +1,173 @@
 /* Main page CSS */
 
 * {
-  margin: 0;
+    margin: 0;
 }
 html, body {
-  height: 100%;
+    height: 100%;
 }
-html {
-  background-color: #121726;
-  font-family: 'Open Sans', sans-serif;
-  color: #ffffff;
+body {
+    background-color: #121726;
+    font-family: 'Open Sans', sans-serif;
+    color: #ffffff;
 }
 .container {
-  min-height: 100%;
-  margin: 0 auto -30px;
-  width: 34em;
+    min-height: 100%;
+    margin: 0 auto -30px;
+    width: 34em;
 }
 .title {
-  padding-top: 40px;
-  padding-bottom: 10px;
-  font-weight: 300;
-  text-align: center;
-  font-size: 2.4em;
+    padding-top: 40px;
+    padding-bottom: 10px;
+    font-weight: 300;
+    text-align: center;
+    font-size: 2.4em;
 }
 .game-title {
-  font-weight: 300;
-  font-size: 1.8em;
+    font-weight: 300;
+    font-size: 1.8em;
 }
 .block {
-  background-color: #262E41;
-  border-radius: 6px;
-  padding: 1em;
-  margin-top: 10px;
+    background-color: #262E41;
+    border-radius: 6px;
+    padding: 1em;
+    margin-top: 10px;
 }
 .block img {
-  max-width: 100%;
+    max-width: 100%;
 }
 .block.warning {
-  background-color: rgb(134, 24, 24);
+    background-color: rgb(134, 24, 24);
 }
 
 /* Input CSS */
 
 input[type=text], select {
-  width: 200px;
-  padding: 11px 20px;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 14px;
+    width: 200px;
+    padding: 11px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 .inputBox {
-  position: relative;
-  overflow: hidden;
-  padding-right: .5em;
+    position: relative;
+    overflow: hidden;
+    padding-right: .5em;
 }
 .inputBox label {
-  position: absolute;
-  left: 7px;
-  top: 12px;
-  color: #000000;
-  font-size: 14px;
-  font-family: Arial;
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    color: #000000;
+    font-size: 14px;
+    font-family: Arial;
 }
 .inputBox input {
-  width: 100%;
-  padding-left: 199px;
+    width: 100%;
+    padding-left: 199px;
 }
 
 /* Button CSS */
 
 input[type=submit] {
-  float: right;
-  background-color: #f27405;
-  color: #ffffff;
-  border: none;
-  font-size: 16px;
-  padding: 12px 22px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
-  outline: none;
-  cursor: pointer;
-  /* needed for mobile safari */
-  -webkit-appearance: none;
+    float: right;
+    background-color: #f27405;
+    color: #ffffff;
+    border: none;
+    font-size: 16px;
+    padding: 12px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+    outline: none;
+    cursor: pointer;
+    /* needed for mobile safari */
+    -webkit-appearance: none;
 }
 input[type=submit]:hover {
-  background-color: #f25c05;
+    background-color: #f25c05;
 }
 input[type=submit]:active {
-  transform: translateY(3px);
-  box-shadow: none;
+    transform: translateY(3px);
+    box-shadow: none;
 }
 .disabled {
-  background-color: #B5B5B4 !important;
-  cursor: not-allowed !important;
+    background-color: #B5B5B4 !important;
+    cursor: not-allowed !important;
 }
 
 /* Link CSS */
 
 a:link {
-  color: #f27405;
+    color: #f27405;
 }
 a:visited {
-  color: #f25c05;
+    color: #f25c05;
 }
 a:visited, a:visited {
-  text-decoration: none;
+    text-decoration: none;
 }
 a:hover, a:active {
-  color: #f25c05;
-  text-decoration: underline;
+    color: #f25c05;
+    text-decoration: underline;
 }
 
 /* Footer */
 
 footer {
-  text-align: center;
-  font-size: 12px;
+    text-align: center;
+    font-size: 12px;
 }
 footer, .push {
-  height: 30px;
+    height: 30px;
 }
 
 /* "Responsiveness" */
 
 @media only screen and (max-width: 600px) {
-  .container {
-    width: 98%;
-  }
-  .title {
-    font-size: 1.6em;
-  }
-  #buyButton {
-    margin-left: 0px;
-  }
-  .game-title {
-    font-size: 1.4em;
-  }
+    .container {
+        width: 98%;
+    }
+    .title {
+        font-size: 1.6em;
+    }
+    #buyButton {
+        margin-left: 0px;
+    }
+    .game-title {
+        font-size: 1.4em;
+    }
 }
 @media only screen and (max-width: 470px) {
-  .inputBox label {
-    display: none;
-  }
-  .inputBox input {
-    padding-left: 10px;
-  }
+    .inputBox label {
+        display: none;
+    }
+    .inputBox input {
+        padding-left: 10px;
+    }
+}
+98%;
+
+}
+.title {
+    font-size: 1.6em;
+}
+#buyButton {
+    margin-left: 0px;
+}
+.game-title {
+    font-size: 1.4em;
+}
+
+}
+@media only screen and (max-width: 470px) {
+    .inputBox label {
+        display: none;
+    }
+    .inputBox input {
+        padding-left: 10px;
+    }
 }
