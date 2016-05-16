@@ -149,22 +149,3 @@ footer, .push {
         padding-left: 10px;
     }
 }
-.title {
-    font-size: 1.6em;
-}
-#buyButton {
-    margin-left: 0px;
-}
-.game-title {
-    font-size: 1.4em;
-}
-
-}
-@media only screen and (max-width: 470px) {
-    .inputBox label {
-        display: none;
-    }
-    .inputBox input {
-        padding-left: 10px;
-    }
-}
