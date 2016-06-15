@@ -8,8 +8,8 @@ Get the background image from any public Steam profile page.
 Simply send a request to: https://martyn.me/projects/steam-profile-background/api?url=profile_url_here
 
 URL can be:
-- ID URL (http://steamcommunity.com/id/Martyn96)
-- Profiles URL (http://steamcommunity.com/profiles/76561198041914206)
+- ID URL (https://steamcommunity.com/id/lasermarty)
+- Profiles URL (https://steamcommunity.com/profiles/76561198041914206)
 
 **API Responses**  
 - 200 Success, returns JSON with fields `imageURL` and `gameName`.
