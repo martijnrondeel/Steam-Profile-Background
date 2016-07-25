@@ -7,9 +7,9 @@ html, body {
     height: 100%;
 }
 body {
-    background-color: #121726;
+    background-color: rgb(18, 23, 38);
     font-family: 'Open Sans', sans-serif;
-    color: #ffffff;
+    color: rgb(255, 255, 255);
 }
 .container {
     min-height: 100%;
@@ -46,7 +46,7 @@ input[type=text], select {
     width: 200px;
     padding: 11px 20px;
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(204, 204, 204);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 14px;
@@ -60,7 +60,7 @@ input[type=text], select {
     position: absolute;
     left: 7px;
     top: 12px;
-    color: #000000;
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-family: Arial;
 }
@@ -73,8 +73,8 @@ input[type=text], select {
 
 input[type=submit] {
     float: right;
-    background-color: #f27405;
-    color: #ffffff;
+    background-color: rgb(242, 116, 5);
+    color: rgb(255, 255, 255);
     border: none;
     font-size: 16px;
     padding: 12px 22px;
@@ -88,31 +88,30 @@ input[type=submit] {
     -webkit-appearance: none;
 }
 input[type=submit]:hover {
-    background-color: #f25c05;
+    background-color: rgb(242, 92, 5);
 }
 input[type=submit]:active {
     transform: translateY(3px);
     box-shadow: none;
 }
 .disabled {
-    background-color: #B5B5B4 !important;
+    background-color: rgb(181, 181, 180) !important;
     cursor: not-allowed !important;
 }
 
 /* Link CSS */
 
 a:link {
-    color: #f27405;
+    color: rgb(242, 116, 5);
 }
 a:visited {
-    color: #f25c05;
-}
-a:visited, a:visited {
     text-decoration: none;
 }
 a:hover, a:active {
-    color: #f25c05;
     text-decoration: underline;
+}
+a:hover, a:active, a:visited {
+    color: rgb(242, 92, 5);
 }
 
 /* Footer */
