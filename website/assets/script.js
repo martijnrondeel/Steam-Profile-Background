@@ -29,9 +29,9 @@ $("#input").submit(function(event) {
 
 function showData(image, game) {
     // Yeah this looks messy...
-    $("#resultBox").html('<div class="block"> <a href="' + image + '" target="_blank">' +
+    $("#resultBox").html('<div class="block"> <a href="' + image + '" target="_blank" rel="noopener">' +
         '<img src="' + image + '" alt="Background image">' +
-        '</a><span class="game-title">' + game + '</span> <a href="http://steamcommunity.com/market/search?q=' + game + ' background" target="_blank">' +
+        '</a><span class="game-title">' + game + '</span> <a href="http://steamcommunity.com/market/search?q=' + game + ' background" target="_blank" rel="noopener">' +
         '<input type="submit" value="Buy wallpaper" id="buyButton"/></a></div>');
     $("#resultBox").show();
 }
