@@ -18,7 +18,7 @@ URL can be:
    - `NO_BACKGROUND`, profile had no background
    - `GAME_NOT_FOUND`, game that belongs to wallpaper doesn't exist (will still return image URL)
 - 429 Too many requests, returns JSON with error and description for failed request. Possible errors are:
-   - `RATELIMIT_EXCEEDED`, you sent more than 10 request in 1 minute
+   - `RATELIMIT_EXCEEDED`, you sent more than 10 requests in 1 minute/200 requests in a day
 
 --
 
