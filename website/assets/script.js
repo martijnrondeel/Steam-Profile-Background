@@ -37,28 +37,33 @@ function showData(image, game) {
 }
 
 function showStatus(data) {
-    if (data.error == "INVALID_URL") {
-        $("#resultBox").html('<div class="block warning">ID is invalid</div>');
-    } else if (data.error == "RATELIMIT_EXCEEDED") {
-        toggleSearch(false);
-        var duration = 59;
-        var timer = setInterval(function() {
-            $('#seconds').text(duration);
+    switch (data.error) {
+        case "INVALID_URL":
+            $("#resultBox").html('<div class="block warning">ID is invalid</div>');
+            break;
+        case "RATELIMIT_EXCEEDED":
+            toggleSearch(false);
+            var duration = 59;
+            var timer = setInterval(function() {
+                $('#seconds').text(duration);
 
-            if (duration <= 0) {
-                clearInterval(timer);
-                toggleSearch(true);
-                $("#resultBox").fadeOut(); // remove the warning
-            } else {
-                duration -= 1;
-            }
-        }, 1000);
-        $("#resultBox").html('<div class="block warning">Limit exceeded, please wait <span id="seconds">60</span> seconds</div>');
-    } else if (data.error == "NO_BACKGROUND") {
-        $("#resultBox").html('<div class="block warning">That profile has no background</div>');
-    } else if (data.error == "GAME_NOT_FOUND") {
-        $("#resultBox").html('<div class="block"> <a href="' + data.imageURL + '" target="_blank">' +
-            '<img src="' + data.imageURL + '" alt="Background image"></a></div><div class="block warning">The game that belongs to this wallpaper doesn\'t exist anymore</div>');
+                if (duration <= 0) {
+                    clearInterval(timer);
+                    toggleSearch(true);
+                    $("#resultBox").fadeOut(); // remove the warning
+                } else {
+                    duration -= 1;
+                }
+            }, 1000);
+            $("#resultBox").html('<div class="block warning">Limit exceeded, please wait <span id="seconds">60</span> seconds</div>');
+            break;
+        case "NO_BACKGROUND":
+            $("#resultBox").html('<div class="block warning">That profile has no background</div>');
+            break;
+        case "GAME_NOT_FOUND":
+            $("#resultBox").html('<div class="block"> <a href="' + data.imageURL + '" target="_blank">' +
+                '<img src="' + data.imageURL + '" alt="Background image"></a></div><div class="block warning">The game that belongs to this wallpaper doesn\'t exist anymore</div>');
+            break;
     }
     $("#resultBox").show();
 }
