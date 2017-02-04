@@ -3,19 +3,23 @@
 * {
     margin: 0;
 }
+
 html, body {
     height: 100%;
 }
+
 body {
     background-color: rgb(18, 23, 38);
     font-family: 'Open Sans', sans-serif;
     color: rgb(255, 255, 255);
 }
+
 .container {
     min-height: 100%;
     margin: 0 auto -30px;
     width: 34em;
 }
+
 .title {
     padding-top: 40px;
     padding-bottom: 10px;
@@ -23,22 +27,27 @@ body {
     text-align: center;
     font-size: 2.4em;
 }
+
 .game-title {
     font-weight: 300;
     font-size: 1.8em;
 }
+
 .block {
     background-color: #262E41;
     border-radius: 6px;
     padding: 1em;
     margin-top: 10px;
 }
+
 .block img {
     max-width: 100%;
 }
+
 .block.warning {
     background-color: rgb(134, 24, 24);
 }
+
 
 /* Input CSS */
 
@@ -51,11 +60,13 @@ input[type=text], select {
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .inputBox {
     position: relative;
     overflow: hidden;
     padding-right: .5em;
 }
+
 .inputBox label {
     position: absolute;
     left: 7px;
@@ -64,10 +75,12 @@ input[type=text], select {
     font-size: 14px;
     font-family: Arial;
 }
+
 .inputBox input {
     width: 100%;
     padding-left: 199px;
 }
+
 
 /* Button CSS */
 
@@ -78,41 +91,46 @@ input[type=submit] {
     border: none;
     font-size: 16px;
     padding: 12px 22px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
     box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
     outline: none;
     cursor: pointer;
     /* needed for mobile safari */
     -webkit-appearance: none;
 }
+
 input[type=submit]:hover {
     background-color: rgb(242, 92, 5);
 }
+
 input[type=submit]:active {
     transform: translateY(3px);
     box-shadow: none;
 }
+
 .disabled {
     background-color: rgb(181, 181, 180) !important;
     cursor: not-allowed !important;
 }
+
 
 /* Link CSS */
 
 a:link {
     color: rgb(242, 116, 5);
 }
+
 a:visited {
     text-decoration: none;
 }
+
 a:hover, a:active {
     text-decoration: underline;
 }
+
 a:hover, a:active, a:visited {
     color: rgb(242, 92, 5);
 }
+
 
 /* Footer */
 
@@ -120,9 +138,11 @@ footer {
     text-align: center;
     font-size: 12px;
 }
+
 footer, .push {
     height: 30px;
 }
+
 
 /* "Responsiveness" */
 
@@ -140,6 +160,7 @@ footer, .push {
         font-size: 1.4em;
     }
 }
+
 @media only screen and (max-width: 470px) {
     .inputBox label {
         display: none;
