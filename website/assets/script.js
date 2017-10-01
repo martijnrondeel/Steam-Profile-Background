@@ -11,7 +11,7 @@ $("#input").submit(function(event) {
     toggleSearch(false);
 
     $.ajax({
-        url: 'https://martyn.me/projects/steam-profile-background/api',
+        url: '/projects/steam-profile-background/api',
         type: 'GET',
         data: {
             url: "http://steamcommunity.com/id/" + $("#inputURL").val()
